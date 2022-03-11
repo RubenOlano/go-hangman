@@ -63,6 +63,10 @@ func validateGuess(guess rune) {
 		}
 	}
 	game.underscores = underScores
+	handleGuess(correct, guess)
+}
+
+func handleGuess(correct bool, guess rune) {
 	if !correct {
 		game.prevGuess = append(game.prevGuess, guess)
 		game.guesses++
