@@ -2,7 +2,7 @@ package board
 
 import "fmt"
 
-var board = [8]string{
+var board = [7]string{
 	`
     +---+
         |

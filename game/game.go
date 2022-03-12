@@ -76,7 +76,7 @@ func handleGuess(correct bool, guess rune) {
 		fmt.Print("\033[H\033[2J")
 		fmt.Printf("You Win! The word was %s\n", game.word)
 	}
-	if game.guesses > 6 {
+	if game.guesses > 5 {
 		game.lose = true
 		fmt.Printf("Too many incorrect guesses. You lose! The word was %s\n", game.word)
 	}
