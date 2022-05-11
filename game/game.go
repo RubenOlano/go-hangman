@@ -23,7 +23,7 @@ type Game struct {
 func initGame() Game {
 	rand.Seed(time.Now().UnixNano())
 	words := [6]string{"Test", "Bye", "Hi", "Tonight", "Hello", "Yo"}
-	word := words[rand.Intn(6)]
+	word := words[rand.Intn(len(words))]
 	return Game{word: word, guesses: 0, underscores: nil, won: false, lose: false, prevGuess: nil}
 }
 
