@@ -20,9 +20,29 @@ type Game struct {
 	prevGuess   []rune
 }
 
+func readFile() []string {
+	file, err := os.Open("web2.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+	scanner.Split(bufio.ScanLines)
+
+	var lines []string
+	for scanner.Scan() {
+		word := scanner.Text()
+		if len(word) > 3 {
+			lines = append(lines, scanner.Text())
+		}
+	}
+	return lines
+}
+
 func initGame() Game {
 	rand.Seed(time.Now().UnixNano())
-	words := [6]string{"Test", "Bye", "Hi", "Tonight", "Hello", "Yo"}
+	words := readFile()
 	word := words[rand.Intn(len(words))]
 	return Game{word: word, guesses: 0, underscores: nil, won: false, lose: false, prevGuess: nil}
 }
